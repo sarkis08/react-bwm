@@ -4,13 +4,14 @@ import { RentalCard } from './RentalCard';
 export class RentalList extends React.Component {
 
     renderRentals() {
-        return this.props.rentals.map((rental, index) => {
+        const rentals = this.props.rentals;
+        return rentals.map(function(rental) {
             return (
                 <RentalCard
-                    key={index}
+                    key={rental._id}
                     rental={rental} />
             )
-        })
+            });
     }
 
     render() {
