@@ -8,7 +8,7 @@ exports.auth = function(req, res) {
     const { email, password } = req.body;
 
     if (!password || !email) {
-        return res.status(422).send({errors: [{title: 'Data missing', detail: 'PRovide email and passworld!'}]});
+        return res.status(422).send({errors: [{title: 'Data missing', detail: 'Provide email and passworld!'}]});
     }
 
     User.findOne({email}, function(err, user) {
@@ -17,7 +17,7 @@ exports.auth = function(req, res) {
         }
 
         if (!user) {
-            return res.status(422).send({errors: [{title: 'Invalid User!', detail: 'User does not exist'}]})
+            return res.status(422).send({errors: [{title: 'Invalid User!', detail: 'User does not exist!'}]})
         }
 
         if (user.hasStatePassword(password)) {
@@ -29,7 +29,7 @@ exports.auth = function(req, res) {
               }, config.SECRET, { expiresIn: '1h'});
 
               return res.json(token);
-                 
+
         } else {
             return res.status(422).send({errors: [{title: 'Wrong Data', detail: 'Wrong email or password'}]})
         }
@@ -82,7 +82,7 @@ exports.register = function(req, res) {
                 });
             }
 
-            return res.json({'registerd': true});
+            return res.json({'registered': true});
         })
     });
 

@@ -1,7 +1,14 @@
 
 @import './variables';
 @import './rental-detail';
+@import './form/form';
 
+.clickable {
+
+    &:hover {
+        cursor: pointer;
+    }
+}
 .apartment {
     color: #a72da3;
 }
@@ -12,4 +19,22 @@
 
 .condo {
     color: #d68000;
+}
+
+.alert-error {
+    font-size: 12px !important;
+    color: $error-color !important;
+}
+
+.btn-bwm {
+    background-color: aquamarine !important;
+    border-color: $main-color;
+    color: #fff !important;
+    padding: 15px 30px;
+    font-size: 20px;
+
+    &:hover, &:focus, &:active {
+        border-color: $main-color !important;
+        background-color: aqua;
+    }
 }
