@@ -12,6 +12,7 @@ class RentalDetail extends React.Component {
         const rentalId = this.props.match.params.id;
 
         this.props.dispatch(actions.fetchRentalById(rentalId));
+
     }
 
 
@@ -44,7 +45,7 @@ class RentalDetail extends React.Component {
             )
         } else {
             return (
-                <h6>Loading ...</h6>
+                <h6>Loading</h6>
             )
         }
 
