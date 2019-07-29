@@ -10,26 +10,32 @@ router.get('/secret', UserCtrl.authMiddleware, function(req, res) {
 });
 
 router.get('/', (req, res) => {
-    Rental.find({}, function(err, foundRentals) {
+    Rental.find({})
+        .select('-bookings') // exclude bookings collection
+        .exec(function(foundRentals) {
 
-        res.json(foundRentals)
-    });
+            res.json(foundRentals)
+        })
 });
 
 router.get('/:id', function(req, res) {
     const rentalId = req.params.id;
 
-    Rental.findById(rentalId, function(err, foundRental) {
-        if (err) {
+    Rental.findById(rentalId)
+        .populate('user', 'username -_id') // Don't send a user id but username
+        .populate('bookings', 'startAt endAt -_id') // Send booking startAt and endAt but no booking id
+        .exec(function(err, foundRental){
+            if (err) {
 
-            res.status(422).send({errors: [{
-                title: 'Rental Error',
-                detail: 'Could not find Rental'
-            }]});
-        }
+                return res.status(422).send({errors: [{
+                    title: 'Rental Error',
+                    detail: 'Could not find Rental'
+                }]});
 
-        res.json(foundRental);
-    });
+            }
+                return res.json(foundRental);
+            
+        });
 });
 
 module.exports = router;
