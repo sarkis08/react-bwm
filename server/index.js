@@ -12,7 +12,7 @@ const bookingRoutes = require('./routes/bookings');
 mongoose.connect(config.DB_URL, { useNewUrlParser: true })
     .then(() => {
         const fakeDb = new FakeDb();
-        //fakeDb.seedDb();
+        // fakeDb.seedDb();
         console.log('Connected to db');
     }).catch((err) => {
         console.log('Fail to connect to DB', err);

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { RentalDetailInfo } from './RentalDetailInfo';
 import { RentalMap } from'./RentalMap';
+import { Booking } from '../../booking/Booking';
+
 import * as actions from '../../../actions';
 
 class RentalDetail extends React.Component {
@@ -38,14 +40,14 @@ class RentalDetail extends React.Component {
                             <div className='col-md-8'>
                                 <RentalDetailInfo rental={rental} />
                             </div>
-                            <div className='col-md-4'> BOOKING</div>
+                            <div className='col-md-4'> <Booking rental={rental} /> </div>
                         </div>
                     </div>
                 </section>
             )
         } else {
             return (
-                <h6>Loading</h6>
+                <h6>Loading ...</h6>
             )
         }
 

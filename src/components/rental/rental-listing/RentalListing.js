@@ -4,20 +4,6 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../../actions';
 
-// HOCs
-// function withAlert(WrappedComponent) {
-//     return class extends React.Component {
-
-//         alertUser() {
-//             alert('WAKE UP DEAR....');
-//         }
-
-//         render() {
-//             return <WrappedComponent {...this.props} alertUser={this.alertUser} />
-//         }
-//     }
-// }
-
 
 class RentalListing extends React.Component {
 

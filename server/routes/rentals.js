@@ -12,7 +12,11 @@ router.get('/secret', UserCtrl.authMiddleware, function(req, res) {
 router.get('/', (req, res) => {
     Rental.find({})
         .select('-bookings') // exclude bookings collection
-        .exec(function(foundRentals) {
+        .exec(function(err, foundRentals) {
+
+            if (err) {
+                res.status(422).send({err:err})
+            }
 
             res.json(foundRentals)
         })
