@@ -8,6 +8,7 @@
     "bcrypt": "^3.0.6",
     "bootstrap": "^4.3.1",
     "bootstrap-daterangepicker": "^2.1.30",
+    "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
@@ -40,7 +41,8 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run start\" \"nodemon server\""
   },
   "browserslist": [
     ">0.2%",
